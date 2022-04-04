@@ -8,6 +8,7 @@ import { Contact } from './components/contact/Contact';
 import { Booking } from './components/booking/Booking';
 import { NotFound } from './components/notFound/NotFound';
 import { Layout } from './components/layout/Layout';
+import { Admin } from './components/admin/Admin';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.render(
             <Routes>
                 <Route path="/" element={<Layout></Layout>}>
                     <Route index element={<Home></Home>} />
+                    <Route path="/admin" element={<Admin></Admin>} />
                     <Route path="/booking" element={<Booking></Booking>} />
                     <Route path="/contact" element={<Contact></Contact>} />
                     <Route path="*" element={<NotFound></NotFound>} />
