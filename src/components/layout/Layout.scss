@@ -1,0 +1,111 @@
+header{
+
+    width:100%;
+    background-color: rgb(0, 102, 255);
+    text-align:center;
+    position:relative;
+
+    h1{
+        font-size:6rem;
+        margin:0px;
+        padding:10px;
+        color:white;
+    }
+}
+
+
+
+//MOBIL
+@media only screen and (max-width:768px){
+
+    header{
+
+        .hamburger{
+            position:absolute;
+            top:10px;
+            right:10px;
+            z-index:1;
+
+            .line{
+                background-color:white;
+                width:50px;
+                height:10px;
+                border-radius:5px;
+                margin-bottom:7px;
+            }
+        }
+
+
+        nav{
+            position:absolute;
+            top:0px;
+            right:0px;
+            width:100%;
+
+            background-color:rgb(0, 58, 145);
+    
+            ul{
+    
+                list-style:none;
+    
+                li{
+                    margin-bottom:10px;
+                    
+                    .navLink{
+                        
+                        color:white;
+                        text-decoration:none;
+                        font-weight:500;
+                        font-size:1.5rem;
+                        padding:2px;
+                    }
+    
+                    .navLink:hover{
+                        text-decoration:underline;
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+
+
+//DESKTOP
+@media only screen and (min-width:769px){
+
+    header{
+
+        nav{
+            position:absolute;
+            right:20px;
+            bottom:10px;
+    
+            ul{
+    
+                list-style:none;
+                display:flex;
+                gap:10px;
+    
+                li{
+                    
+                    .navLink{
+                        
+                        color:white;
+                        text-decoration:none;
+                        font-weight:500;
+                        font-size:1.5rem;
+                        padding:2px;
+                    }
+    
+                    .navLink:hover{
+                        text-decoration:underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
