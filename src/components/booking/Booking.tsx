@@ -1,4 +1,4 @@
-import './Booking.css';
+import './Booking.scss';
 
 export function Booking(){
 

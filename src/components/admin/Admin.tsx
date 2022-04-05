@@ -1,4 +1,4 @@
-import './Admin.css';
+import './Admin.scss';
 
 export function Admin(){
 
