@@ -4,7 +4,7 @@ export function Home(){
 
     return(
         <>
-            Home asdfasf
+            Home
         </>
     );
 }
