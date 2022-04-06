@@ -85,10 +85,6 @@ export function Layout(){
 
             </header>
 
-
-
-
-
             <main>
                 
                 <Outlet></Outlet>
@@ -97,7 +93,7 @@ export function Layout(){
                 <p>Vår resturang: https://school-restaurant-api.azurewebsites.net/restaurant/624abc41df8a9fb11c3ea8b6</p>
             </main>
             
-            <footer>Footer</footer>
+            <footer>SITE BY GROUP-5 <br/>Copyright &#169;2022 JAMMdevelopers</footer>
         </div>
     );
 }
