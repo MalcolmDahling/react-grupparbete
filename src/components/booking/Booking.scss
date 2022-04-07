@@ -1,0 +1,20 @@
+form {
+    border:1px solid black;
+    width:200px;
+
+    p{
+        margin:0px;
+        padding:0px;
+        margin-top:10px;
+    }
+
+
+
+    input[type=button]{
+        margin-top:20px;
+    }
+    
+    *{
+        display:block;
+    }
+}
