@@ -127,6 +127,11 @@ export function Booking(){
                 if(dateArray[i].numBookings21 < 16){
                     setAvaliableTime21(<option value="21:00">21:00</option>);               
                 }
+
+                if(dateArray[i].numBookings18 > 15 && dateArray[i].numBookings21 > 15)
+                {
+                    //INGA LEDIGA TIDER, FIXA EN TEXT SOM KOMMER UPP
+                }
             }
         }
     }
