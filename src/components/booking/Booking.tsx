@@ -100,6 +100,11 @@ export function Booking(){
 
 
 
+
+
+
+    
+
     //########## FORM ##########
     //########## FORM ##########
     //########## FORM ##########
@@ -159,7 +164,14 @@ export function Booking(){
 
 
     function postBooking(){
-        axios.post<IPost>('https://school-restaurant-api.azurewebsites.net/booking/create', post);
+        axios.post<IPost>('https://school-restaurant-api.azurewebsites.net/booking/create', post)
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error);
+            
+        });
     }
 
     //########## FORM ##########
