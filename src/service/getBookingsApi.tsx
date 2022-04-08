@@ -15,5 +15,5 @@ export function GetBookings(){
             console.log(res.data);
             setInfo(res.data)
         })
-    })
+    }, [])
 }
