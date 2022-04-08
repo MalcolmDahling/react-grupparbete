@@ -17,7 +17,7 @@ interface IBooking{
 }
 
 interface ICustomer{
-    firstname:string;
+    name:string;
     lastname:string;
     email:string;
     phone:string;
@@ -42,6 +42,8 @@ export function Booking(){
     const [avaliableTime18, setAvaliableTime18] = useState<ReactElement>();
     const [avaliableTime21, setAvaliableTime21] = useState<ReactElement>();
     let today = new Date();
+
+    const [noAvaliableTime, setNoAvaliableTime] = useState(<></>);
 
 
     //populate dateArray
@@ -115,6 +117,7 @@ export function Booking(){
 
         setAvaliableTime18(<></>);
         setAvaliableTime21(<></>);
+        setNoAvaliableTime(<></>);
         
         for(let i = 0; i < dateArray.length; i++){
 
@@ -130,7 +133,7 @@ export function Booking(){
 
                 if(dateArray[i].numBookings18 > 15 && dateArray[i].numBookings21 > 15)
                 {
-                    //INGA LEDIGA TIDER, FIXA EN TEXT SOM KOMMER UPP
+                    setNoAvaliableTime(<p className="error">No avaliable times this date.</p>);
                 }
             }
         }
@@ -138,31 +141,38 @@ export function Booking(){
 
 
 
-
     const [newBooking, setNewBooking] = useState<IBooking>({restaurantId:'624abc41df8a9fb11c3ea8b6', date:'', time:'', numberOfGuests:0});
-    const [newCustomer, setNewCustomer] = useState<ICustomer>({firstname:'', lastname:'', email:'', phone:''});
+    const [newCustomer, setNewCustomer] = useState<ICustomer>({name:'', lastname:'', email:'', phone:''});
     const [post, setPost] = useState<IPost>();
 
     function handleChangeBooking(e:ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>){
 
         let name:string = e.target.name;
 
-        if(name == "firstname" || name == "lastname" || name == "email" || name == "phone"){
+        if(name == "name" || name == "lastname" || name == "email" || name == "phone"){
             setNewCustomer({...newCustomer, [name]: e.target.value});
         }
 
         else{
             setNewBooking({...newBooking, [name]: e.target.value});
         }
+    }
 
+
+    useEffect(() => {
         setPost({
             restaurantId:'624abc41df8a9fb11c3ea8b6',
-            date:'',
-            time:'',
-            numberOfGuests:0,
+            date:newBooking.date,
+            time:newBooking.time,
+            numberOfGuests:newBooking.numberOfGuests,
             customer:newCustomer
-        });
-    }
+        });  
+    }, [newBooking, newCustomer]);
+
+
+    useEffect(() => {
+        console.log(post);
+    }, [post]);
 
 
 
@@ -203,11 +213,13 @@ export function Booking(){
                     {avaliableTime21}
                 </select>
 
+                {noAvaliableTime}
+
                 <p>Number of people (1-6):</p>
                 <input type="number" name="numberOfGuests" onChange={handleChangeBooking} required max={6} min={0} placeholder="0"></input>
 
                 <p>Firstname:</p>
-                <input type="text" name="firstname" onChange={handleChangeBooking} required placeholder="Firstname"></input>
+                <input type="text" name="name" onChange={handleChangeBooking} required placeholder="Firstname"></input>
 
                 <p>Lastname:</p>
                 <input type="text" name="lastname" onChange={handleChangeBooking} required placeholder="Lastname"></input>
