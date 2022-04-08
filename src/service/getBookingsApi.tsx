@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import { BookingId } from "../models/BookingId";
 
 // hämta hem boking id från Api
-
 export function GetBookings(){
 
     const [BookingIds, setInfo] = useState<BookingId[]>([])
@@ -14,6 +13,6 @@ export function GetBookings(){
         .then(res =>{
             console.log(res.data);
             setInfo(res.data)
-        })
-    }, [])
+        });
+    }, []);
 }

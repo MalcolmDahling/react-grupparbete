@@ -20,12 +20,14 @@ export function Contact(){
 
     // skirv ut till webbläsaren med hjälp av maps
     const RestaurantInfo = Data.map((data) =>{
-        return (<>
+        return (
+        <div key={data.id}>
             <h1>{data.name}</h1>
             <p>{data.address}</p>
             <p>{data.zip}</p>
             <p>{data.city}</p>
-        </>)
+    </div>
+        )
     })
 
     return(
