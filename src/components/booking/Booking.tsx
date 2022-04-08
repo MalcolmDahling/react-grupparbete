@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ChangeEvent, ReactElement, useState } from 'react';
+import { ChangeEvent, ReactElement, ReactFragment, useState } from 'react';
 import { useEffect } from 'react';
 import './Booking.scss';
 
@@ -39,11 +39,11 @@ export function Booking(){
 
     const [dateArray, setDateArray] = useState<IDateArray[]>([]);
     const [avaliableDates, setAvaliableDates] = useState<ReactElement[]>([]);
-    const [avaliableTime18, setAvaliableTime18] = useState<ReactElement>();
-    const [avaliableTime21, setAvaliableTime21] = useState<ReactElement>();
+
     let today = new Date();
 
-    const [noAvaliableTime, setNoAvaliableTime] = useState(<></>);
+    
+    
 
 
     //populate dateArray
@@ -111,13 +111,27 @@ export function Booking(){
     //########## FORM ##########
     //########## FORM ##########
 
+
+    const [avaliableTime18, setAvaliableTime18] = useState<ReactElement>();
+    const [avaliableTime21, setAvaliableTime21] = useState<ReactElement>();
+
+    const [errorNoAvaliableTimes, setErrorNoAvaliableTimes] = useState<HTMLParagraphElement | ReactFragment>(<></>);
+    const [errorFieldMissing, setErrorFieldMissing] = useState<HTMLParagraphElement | ReactFragment>(<></>);
+
+
+
+
     function handleChangeDay(e:ChangeEvent<HTMLSelectElement>){
 
         handleChangeBooking(e);
 
+        //reset times.
         setAvaliableTime18(<></>);
         setAvaliableTime21(<></>);
-        setNoAvaliableTime(<></>);
+
+        //reset errors
+        setErrorNoAvaliableTimes(<></>);
+
         
         for(let i = 0; i < dateArray.length; i++){
 
@@ -133,19 +147,24 @@ export function Booking(){
 
                 if(dateArray[i].numBookings18 > 15 && dateArray[i].numBookings21 > 15)
                 {
-                    setNoAvaliableTime(<p className="error">No avaliable times this date.</p>);
+                    setErrorNoAvaliableTimes(<p className="error">No avaliable times this date.</p>);
                 }
             }
         }
+
+
     }
 
 
 
-    const [newBooking, setNewBooking] = useState<IBooking>({restaurantId:'624abc41df8a9fb11c3ea8b6', date:'', time:'', numberOfGuests:0});
+    const [newBooking, setNewBooking] = useState<IBooking>({restaurantId:'624abc41df8a9fb11c3ea8b6', date:'', time:'', numberOfGuests:1});
     const [newCustomer, setNewCustomer] = useState<ICustomer>({name:'', lastname:'', email:'', phone:''});
     const [post, setPost] = useState<IPost>();
 
     function handleChangeBooking(e:ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>){
+
+
+
 
         let name:string = e.target.name;
 
@@ -179,14 +198,21 @@ export function Booking(){
 
 
     function postBooking(){
-        axios.post<IPost>('https://school-restaurant-api.azurewebsites.net/booking/create', post)
-        .then(response => {
-            console.log(response);
-        })
-        .catch(error => {
-            console.log(error);
-            
-        });
+
+        if(newBooking.date == '' || newBooking.time == ''|| newCustomer.name == '' || newCustomer.lastname == '' || newCustomer.email == '' || newCustomer.phone == ''){
+            setErrorFieldMissing(<p className="error">Please fill in all fields.</p>);
+        }
+
+        else{
+            axios.post<IPost>('https://school-restaurant-api.azurewebsites.net/booking/create', post)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+                
+            });
+        }
     }
 
     //########## FORM ##########
@@ -212,11 +238,11 @@ export function Booking(){
                     {avaliableTime18}
                     {avaliableTime21}
                 </select>
+                {errorNoAvaliableTimes}
 
-                {noAvaliableTime}
 
                 <p>Number of people (1-6):</p>
-                <input type="number" name="numberOfGuests" onChange={handleChangeBooking} required max={6} min={0} placeholder="0"></input>
+                <input type="number" name="numberOfGuests" onChange={handleChangeBooking} required max={6} min={1} value={newBooking.numberOfGuests}></input>
 
                 <p>Firstname:</p>
                 <input type="text" name="name" onChange={handleChangeBooking} required placeholder="Firstname"></input>
@@ -231,6 +257,8 @@ export function Booking(){
                 <input type="phone" name="phone" onChange={handleChangeBooking} required placeholder="Phone"></input>
 
                 <input type="button" name="submitBooking" onClick={postBooking} value="Reserve Table"></input>
+
+                {errorFieldMissing}
             </form>
         </>
     );
