@@ -232,6 +232,7 @@ export function Booking(){
                 </select>
 
 
+
                 <p>Avaliable times:</p>
                 <select name="time" defaultValue={"DEFAULT"} onChange={handleChangeBooking}>
                     <option value="DEFAULT" disabled>Select time</option>
@@ -241,19 +242,19 @@ export function Booking(){
                 {errorNoAvaliableTimes}
 
 
-                <p>Number of people (1-6):</p>
+                <p>Number of people (1-6)</p>
                 <input type="number" name="numberOfGuests" onChange={handleChangeBooking} required max={6} min={1} value={newBooking.numberOfGuests}></input>
 
-                <p>Firstname:</p>
+                <p>Firstname</p>
                 <input type="text" name="name" onChange={handleChangeBooking} required placeholder="Firstname"></input>
 
-                <p>Lastname:</p>
+                <p>Lastname</p>
                 <input type="text" name="lastname" onChange={handleChangeBooking} required placeholder="Lastname"></input>
 
-                <p>Email:</p>
+                <p>Email</p>
                 <input type="email" name="email" onChange={handleChangeBooking} required placeholder="Email"></input>
 
-                <p>Phone:</p>
+                <p>Phone</p>
                 <input type="phone" name="phone" onChange={handleChangeBooking} required placeholder="Phone"></input>
 
                 <input type="button" name="submitBooking" onClick={postBooking} value="Reserve Table"></input>
