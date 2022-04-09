@@ -116,8 +116,6 @@ export function Booking(){
     const [avaliableTime21, setAvaliableTime21] = useState<ReactElement>();
 
     const [errorNoAvaliableTimes, setErrorNoAvaliableTimes] = useState<HTMLParagraphElement | ReactFragment>(<></>);
-    const [errorFieldMissing, setErrorFieldMissing] = useState<HTMLParagraphElement | ReactFragment>(<></>);
-
 
 
 
@@ -196,6 +194,8 @@ export function Booking(){
 
 
 
+    const [errorFieldMissing, setErrorFieldMissing] = useState<HTMLParagraphElement | ReactFragment>(<></>);
+    const [bookingComplete, setBookingComplete] = useState<HTMLParagraphElement | ReactFragment>(<></>);
 
     function postBooking(){
 
@@ -212,6 +212,9 @@ export function Booking(){
                 console.log(error);
                 
             });
+
+            setErrorFieldMissing(<></>);
+            setBookingComplete(<p className="bookingComplete">Table reserved!</p>);
         }
     }
 
@@ -242,8 +245,8 @@ export function Booking(){
                 {errorNoAvaliableTimes}
 
 
-                <p>Number of people (1-6)</p>
-                <input type="number" name="numberOfGuests" onChange={handleChangeBooking} required max={6} min={1} value={newBooking.numberOfGuests}></input>
+                <p>Number of people: {newBooking.numberOfGuests}</p>
+                <input type="range" name="numberOfGuests" onChange={handleChangeBooking} required max={6} min={1} value={newBooking.numberOfGuests}></input>
 
                 <p>Firstname</p>
                 <input type="text" name="name" onChange={handleChangeBooking} required placeholder="Firstname"></input>
@@ -260,6 +263,7 @@ export function Booking(){
                 <input type="button" name="submitBooking" onClick={postBooking} value="Reserve Table"></input>
 
                 {errorFieldMissing}
+                {bookingComplete}
             </form>
         </>
     );
