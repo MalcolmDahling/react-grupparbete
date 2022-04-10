@@ -54,7 +54,7 @@ export function Booking(){
         for(let i = 0; i < 30; i++){
 
             arr.push({
-                date: new Date( new Date().setDate(today.getDate() +i) ).toLocaleDateString(),
+                date: new Date( new Date().setDate(today.getDate() +i) ).toLocaleDateString('sv-SE'),
                 numBookings18: 0,
                 numBookings21: 0
             });   
@@ -62,7 +62,7 @@ export function Booking(){
 
         setDateArray(arr);
     }
-    
+
 
 
 
@@ -199,14 +199,21 @@ export function Booking(){
 
 
 
+    let checkbox = false;
+    function checkCheckbox(){
+        checkbox = !checkbox;
+    }
+
+
+
 
     const [errorFieldMissing, setErrorFieldMissing] = useState<HTMLParagraphElement | ReactFragment>(<></>);
     const [bookingComplete, setBookingComplete] = useState<HTMLParagraphElement | ReactFragment>(<></>);
 
     function postBooking(){
 
-        if(newBooking.date == '' || newBooking.time == ''|| newCustomer.name == '' || newCustomer.lastname == '' || newCustomer.email == '' || newCustomer.phone == ''){
-            setErrorFieldMissing(<p className="error">Please fill in all fields.</p>);
+        if(newBooking.date == '' || newBooking.time == ''|| newCustomer.name == '' || newCustomer.lastname == '' || newCustomer.email == '' || newCustomer.phone == '' || checkbox == false){
+            setErrorFieldMissing(<p className="error">Please fill in all fields and agree to GDPR.</p>);
         }
 
         else{
@@ -265,6 +272,9 @@ export function Booking(){
 
                 <p>Phone</p>
                 <input type="phone" name="phone" onChange={handleChangeBooking} required placeholder="Phone"></input>
+
+                <input type="checkbox" id="gdpr" className="gdprCheckbox" onChange={checkCheckbox} required></input>
+                <label htmlFor="gdpr" id="gdprLabel">I agree to GDPR</label>
 
                 <input type="button" name="submitBooking" onClick={postBooking} value="Reserve Table"></input>
 

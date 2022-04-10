@@ -52,6 +52,19 @@ form {
     input[type=button]:hover{
         background-color:rgb(0, 79, 197);
     }
+
+
+    #gdpr{
+        display:inline;
+        border:2px solid red;
+        width:30px;
+    }
+
+    #gdprLabel{
+        display:inline;
+        font-weight:500;
+        vertical-align:45%;
+    }
     
 
     .error{
