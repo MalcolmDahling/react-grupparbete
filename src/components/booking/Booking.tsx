@@ -123,7 +123,7 @@ export function Booking(){
 
         handleChangeBooking(e);
 
-        //reset times.
+        //reset times
         setAvaliableTime18(<></>);
         setAvaliableTime21(<></>);
 
@@ -161,17 +161,21 @@ export function Booking(){
 
     function handleChangeBooking(e:ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>){
 
-
-
-
         let name:string = e.target.name;
 
-        if(name == "name" || name == "lastname" || name == "email" || name == "phone"){
+        if(name == 'name' || name == 'lastname' || name == 'email' || name == 'phone'){
             setNewCustomer({...newCustomer, [name]: e.target.value});
         }
 
         else{
-            setNewBooking({...newBooking, [name]: e.target.value});
+
+            if(name == 'numberOfGuests'){
+                setNewBooking({...newBooking, [name]: parseInt(e.target.value)});
+            }
+
+            else{
+                setNewBooking({...newBooking, [name]: e.target.value});
+            }
         }
     }
 
@@ -190,6 +194,8 @@ export function Booking(){
     useEffect(() => {
         console.log(post);
     }, [post]);
+
+
 
 
 
