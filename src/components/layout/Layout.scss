@@ -4,21 +4,36 @@ header{
     background-color: rgb(0, 102, 255);
     text-align:center;
     position:relative;
+    background-image: url(https://www.essentialhome.eu/inspirations/wp-content/uploads/2020/08/Check-Decorazionis-Unique-Restaurant-Design-That-Is-All-About-Embracing-The-Classic-Blue-Shades-capa.jpg);
+    background-size: cover;
+    min-height: 300px;
+    background-position: -5px;
 
     h1{
-        font-size:6rem;
+        font-size:8rem;
+        text-align: center;
         margin:0px;
-        padding:10px;
-        color:white;
+        padding:0px;
+        color:rgba(48, 185, 219, 0.673);
+        font-family:Arial, Helvetica, sans-serif;
     }
+}
+.Restaurant{
+    border: 1px solid black;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 50px;
+    background-color: black;
+    color: white;
+    position: relative;
 }
 footer{
     float:inline-end;
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 10px;
     font-size: 15px;
     text-align: center;
-    background-color: rgba(14, 78, 240, 0.112);
+    background-color: rgb(216, 237, 255);
     display:block;
 }
 
@@ -51,7 +66,7 @@ footer{
             right:0px;
             width:100%;
 
-            background-color:rgb(0, 58, 145);
+            background-color:rgba(48, 185, 219);
     
             ul{
     
@@ -71,6 +86,7 @@ footer{
     
                     .navLink:hover{
                         text-decoration:underline;
+                        color: rgba(38, 107, 125, 0.44);
                     }
                 }
             }
@@ -109,7 +125,8 @@ footer{
                     }
     
                     .navLink:hover{
-                        text-decoration:underline;
+                        background-color: rgba(48, 185, 219);
+                        border-radius: 10px;
                     }
                 }
             }
