@@ -4,28 +4,42 @@ export function Home(){
 
     return(
         <>
-            <h1>- MENY -</h1>
+        <hr></hr>
+            <h1 className="Meny-text">- MENY -</h1>
             <div className='Food'>
-            <div>
-                <img src="/img/hamburgare.jpg" alt="hamburgare" />
+            
+            <div className="Food-text">
+            <h1>- Hamburgare -</h1>
+                <img src="img/Hamburgare.png" alt="hamburgare" />
                 <br></br>
                 <p>text</p>
             </div>
-            <div>
-                <img src="img/plankstek.jpg" alt="plankstek" />
+            
+            <br></br>
+           
+            <div className="Food-text">
+            <h1>- Plankstek -</h1>
+                <img src="img/plankstek.png" alt="plankstek" />
                 <br></br>
                 <p>text</p>
             </div>
-            <div>
-                <img src="/img/kottfarssas.jpg" alt="kottfarssas" />
+            <br></br>
+            
+            <div className="Food-text">
+            <h1>- Köttfärsås -</h1>
+                <img src="/img/Köttfärsås.png" alt="kottfarssas" />
                 <br></br>
                 <p>text</p>
             </div>
-            <div>
-                <img src="/img/sushi.jpg" alt="sushi" />
+            <br></br>
+            
+            <div className="Food-text">
+            <h1>- Sushi -</h1>
+                <img src="/img/Sushi.png" alt="sushi" />
                 <br></br>
                 <p>text</p>
             </div></div>
+          
         </>
     );
 }

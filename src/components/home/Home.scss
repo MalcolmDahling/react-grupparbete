@@ -1,16 +1,37 @@
-h1{
+body{
+    background-color:rgba(48, 185, 219, 0.16) ;
+}
+.Meny-text{
     text-align: center;
+    font-size: 6rem;
+    font-family: 'Courier New', Courier, monospace;
+    color:rgb(30, 127, 152);
 }
 .Food {
-    width: 70%;
-    height: 50%;
+    
     position: relative;
-    margin-left: 30%;
-    justify-content:space-between;
+    margin-left: 10%;
+    text-align: center;
+    width: 80%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.40);
+    h1{
+        color: rgb(30, 127, 152);
+        font-size: 2.5rem;
+        font-family: 'Courier New', Courier, monospace;
+    }
 img {
-    border: 2px solid rgb(48, 185, 219, 0.673);
-    width: 70%;
+   
+    // border-radius: 30px;
+    // width: 70%;
     p{
         text-align: center;
     }
 }}
+.Food-text{
+    border-radius: 100px;
+    width: 100%;
+}
+hr{
+    border: 6px solid rgb(30, 127, 152);
+}
