@@ -240,6 +240,10 @@ export function Booking(){
     
     return(
         <>
+        <h1 className="Booking-text">Booking</h1>
+        <div>
+            <img src="https://c.stocksy.com/a/1aN400/z9/1043957.jpg" alt="Friends Table"/>
+            </div>
             <form>
                 <p>Select day:</p>
                 <select name="date" onChange={handleChangeDay} /*AND handleChangeBooking*/ defaultValue={"DEFAULT"}>
