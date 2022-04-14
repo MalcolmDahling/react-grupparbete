@@ -3,6 +3,10 @@ import { useEffect, useState } from 'react';
 import { GetRestaurantApi } from '../../models/GetRestaurantApi';
 import './Contact.scss';
 
+
+
+ 
+
 export function Contact(){
 
     
@@ -32,7 +36,11 @@ export function Contact(){
 
     return(
         <>
-        {RestaurantInfo}
+        <p className="Contact-Title">Contact</p>
+        <br></br>
+        <img src="https://media-cdn.tripadvisor.com/media/photo-s/07/e8/9b/44/blue-bar.jpg" className="Contact-Picture"/>
+        <h1 className="Contact-text"> {RestaurantInfo}</h1>
+        
         </>
     );
 }

@@ -7,16 +7,13 @@ export function Home(){
         <hr></hr>
             <h1 className="Meny-text">- MENY -</h1>
             <div className='Food'>
-            
+            <h1 className="Title-text">- Hamburgare -</h1>
             <div className="Food-text">
-            <h1>- Hamburgare -</h1>
                 <img src="img/Hamburgare.png" alt="hamburgare" />
                 <br></br>
                 <p>text</p>
             </div>
-            
             <br></br>
-           
             <div className="Food-text">
             <h1>- Plankstek -</h1>
                 <img src="img/plankstek.png" alt="plankstek" />
@@ -24,7 +21,6 @@ export function Home(){
                 <p>text</p>
             </div>
             <br></br>
-            
             <div className="Food-text">
             <h1>- Köttfärsås -</h1>
                 <img src="/img/Köttfärsås.png" alt="kottfarssas" />
