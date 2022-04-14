@@ -1,7 +1,11 @@
 body{
     background-color:rgba(48, 185, 219, 0.16) ;
 }
+hr{
+    border: 6px solid rgb(30, 127, 152);
+}
 .Meny-text{
+    
     text-align: center;
     font-size: 6rem;
     font-family: 'Courier New', Courier, monospace;
@@ -21,9 +25,9 @@ body{
         font-family: 'Courier New', Courier, monospace;
     }
 img {
-   
-    // border-radius: 30px;
-    // width: 70%;
+    border: 6px solid rgb(30, 127, 152);
+    border-radius: 30px;
+    width: 70%;
     p{
         text-align: center;
     }
@@ -31,7 +35,5 @@ img {
 .Food-text{
     border-radius: 100px;
     width: 100%;
-}
-hr{
-    border: 6px solid rgb(30, 127, 152);
+    
 }
