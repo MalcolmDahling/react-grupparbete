@@ -11,7 +11,7 @@ export function Contact(){
 
     
     const [Data, setData] = useState<GetRestaurantApi[]>([])
-
+    
     // kör Api när app laddas
     useEffect(() => {
         axios
@@ -27,9 +27,8 @@ export function Contact(){
         return (
         <div key={data.id}>
             <h1>{data.name}</h1>
-            <p>{data.address}</p>
-            <p>{data.zip}</p>
-            <p>{data.city}</p>
+            <p> Adress: {data.address}, {data.zip}, {data.city}</p>
+            <p>tel: 000- 000 00 00</p>
     </div>
         )
     })
