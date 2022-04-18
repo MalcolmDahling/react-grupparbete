@@ -63,8 +63,8 @@ export function Admin(){
     // skriver ut Api i HTML
     const Api = Data.map((data) => {
         return(
-            <table className='box' key={data._id}>
-                <tbody>
+            <div key={data._id}>
+                
             <tr className='box' key={data._id}>
                 <td>{data.customerId}</td>
                 <td>{data.time}</td>
@@ -72,8 +72,8 @@ export function Admin(){
                 <td>{data.numberOfGuests}</td>
                 <td><button onClick={()=>Delete(data._id)}>Ta bort</button></td>
             </tr>
-            </tbody>
-            </table>
+    
+            </div>
         )
     });
 
