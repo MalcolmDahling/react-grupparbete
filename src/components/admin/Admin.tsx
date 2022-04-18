@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import './Admin.scss';
 
 export function Admin(){
 
+    // Används för att ta bort från Api
     class GetBookings{    
         constructor (
         public _id: string,
@@ -14,6 +15,30 @@ export function Admin(){
         public customerId: string
         )
     {}}
+
+    // Används för att push till Api
+    interface IBooking{
+        restaurantId:string;
+        date:string;
+        time:string;
+        numberOfGuests:number;
+    }
+    
+    interface ICustomer{
+        name:string;
+        lastname:string;
+        email:string;
+        phone:string;
+    }
+    
+    interface IPost{
+        restaurantId:string;
+        date:string;
+        time:string;
+        numberOfGuests:number;
+    
+        customer:ICustomer;
+    }
 
     const [Data, setData] = useState<GetBookings[]>([])
 
@@ -26,7 +51,6 @@ export function Admin(){
             setData(res.data)
         }).catch(err => console.log('Det blev fel'));
     }, [])
-
 
     // tar bort från Api
     const Delete = (id: string) => {
@@ -53,32 +77,78 @@ export function Admin(){
         )
     });
 
+    const [newBooking, setNewBooking] = useState<IBooking>({restaurantId:'624abc41df8a9fb11c3ea8b6', date:'', time:'', numberOfGuests:1});
+    const [newCustomer, setNewCustomer] = useState<ICustomer>({name:'', lastname:'', email:'', phone:''});
+    const [post, setPost] = useState<IPost>();
+
+    // använder oss av inputs values
+    function handleBooking(e:ChangeEvent<HTMLSelectElement> | ChangeEvent<HTMLInputElement>){
+
+        let name:string = e.target.name;
+
+        if(name == 'name' || name == 'lastname' || name == 'email' || name == 'phone'){
+            setNewCustomer({...newCustomer, [name]: e.target.value});
+        }
+        else{
+            if(name == 'numberOfGuests'){
+                setNewBooking({...newBooking, [name]: parseInt(e.target.value)});
+            }
+            else{
+                setNewBooking({...newBooking, [name]: e.target.value});
+            }
+        }
+    }
+
+    // Gör en post som vi kan skicka till Api
+    useEffect(() => {
+        setPost({
+            restaurantId:'624abc41df8a9fb11c3ea8b6',
+            date:newBooking.date,
+            time:newBooking.time,
+            numberOfGuests:newBooking.numberOfGuests,
+            customer:newCustomer
+        });  
+    }, [newBooking, newCustomer]);
+
+    useEffect(() => {
+    }, [post]);
+
+    // Pushar post som gjorts innan till Api
+    function sendToApi(){
+        axios.post<IPost>('https://school-restaurant-api.azurewebsites.net/booking/create', post)
+        .then(res => {
+            console.log(res);   
+        }).catch(err => {
+            console.log(err, 'Du har INTE beställt');
+        });
+    }
 
     return(
         <>
         <form>
-            <label htmlFor="firstname">Namn:</label>
-            <input type="text" name='firstname' />
+            <label htmlFor="name">Namn:</label>
+            <input type="text" name='name' onChange={handleBooking}/>
 
             <label htmlFor="lastname">Efternamn:</label>
-            <input type="text" name='lastname'/>
+            <input type="text" name='lastname' onChange={handleBooking}/>
 
             <label htmlFor="email">Email:</label>
-            <input type="text" name='email'/>
+            <input type="text" name='email' onChange={handleBooking}/>
 
-            <label htmlFor="tel">Telefon:</label>
-            <input type="text" name='tel'/>
+            <label htmlFor="phone">Telefon:</label>
+            <input type="text" name='phone' onChange={handleBooking}/>
            
-            <label htmlFor="amount">Antal:</label>
-            <input type="number" name='amount'/>
+            <label htmlFor="numberOfGuests">Antal:</label>
+            <input type="number" name='numberOfGuests'onChange={handleBooking}/>
 
-            <label htmlFor="date">Antal:</label>
-            <input type="date" name='date'/>
+            <label htmlFor="date">datum:</label>
+            <input type="date" name='date' onChange={handleBooking}/>
            
-            <label htmlFor="time">Antal:</label>
-            <input type="time" name='time'/>
-
+            <label htmlFor="time">tid:</label>
+            <input type="time" name='time' onChange={handleBooking}/>
         </form>
+
+        <button onClick={sendToApi}>Send</button>
 
             {Api}
         </>
