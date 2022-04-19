@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Home } from './components/home/Home';
 import { Contact } from './components/contact/Contact';
 import { Booking } from './components/booking/Booking';
@@ -12,7 +12,7 @@ import { Admin } from './components/admin/Admin';
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter>
+        <HashRouter>
             <Routes>
                 <Route path="/" element={<Layout></Layout>}>
                     <Route index element={<Home></Home>} />
@@ -22,7 +22,7 @@ ReactDOM.render(
                     <Route path="*" element={<NotFound></NotFound>} />
                 </Route>
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     </React.StrictMode>,
     document.getElementById('root')
 );
