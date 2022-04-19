@@ -213,7 +213,7 @@ export function Booking(){
     function postBooking(){
 
         if(newBooking.date == '' || newBooking.time == ''|| newCustomer.name == '' || newCustomer.lastname == '' || newCustomer.email == '' || newCustomer.phone == '' || checkbox == false){
-            setErrorFieldMissing(<p className="error">Please fill in all fields and agree to GDPR.</p>);
+            setErrorFieldMissing(<p className="error">Fyll i alla fält och godkänn GDPR.</p>);
         }
 
         else{
@@ -227,7 +227,7 @@ export function Booking(){
             });
 
             setErrorFieldMissing(<></>);
-            setBookingComplete(<p className="bookingComplete">Table reserved!</p>);
+            setBookingComplete(<p className="bookingComplete">Bord bokat!</p>);
         }
     }
 
@@ -240,47 +240,47 @@ export function Booking(){
     
     return(
         <>
-        <h1 className="Booking-text">Booking</h1>
+        <h1 className="Booking-text">Bokningar</h1>
         <div>
             <img src="https://c.stocksy.com/a/1aN400/z9/1043957.jpg" alt="Friends Table"/>
             </div>
             <form>
-                <p>Select day:</p>
+                <p>Välj dag:</p>
                 <select name="date" onChange={handleChangeDay} /*AND handleChangeBooking*/ defaultValue={"DEFAULT"}>
-                    <option value="DEFAULT" disabled>Select a day</option>
+                    <option value="DEFAULT" disabled>Välj en dag</option>
                     {avaliableDates}
                 </select>
 
 
 
-                <p>Avaliable times:</p>
+                <p>Lediga tider:</p>
                 <select name="time" defaultValue={"DEFAULT"} onChange={handleChangeBooking}>
-                    <option value="DEFAULT" disabled>Select time</option>
+                    <option value="DEFAULT" disabled>välj tid</option>
                     {avaliableTime18}
                     {avaliableTime21}
                 </select>
                 {errorNoAvaliableTimes}
 
 
-                <p>Number of people: {newBooking.numberOfGuests}</p>
+                <p>Välj hur många personer: {newBooking.numberOfGuests}</p>
                 <input type="range" name="numberOfGuests" onChange={handleChangeBooking} required max={6} min={1} value={newBooking.numberOfGuests}></input>
 
-                <p>Firstname</p>
+                <p>Namn</p>
                 <input type="text" name="name" onChange={handleChangeBooking} required placeholder="Firstname"></input>
 
-                <p>Lastname</p>
+                <p>Efternamn</p>
                 <input type="text" name="lastname" onChange={handleChangeBooking} required placeholder="Lastname"></input>
 
                 <p>Email</p>
                 <input type="email" name="email" onChange={handleChangeBooking} required placeholder="Email"></input>
 
-                <p>Phone</p>
+                <p>Telefon</p>
                 <input type="phone" name="phone" onChange={handleChangeBooking} required placeholder="Phone"></input>
 
                 <input type="checkbox" id="gdpr" className="gdprCheckbox" onChange={checkCheckbox} required></input>
-                <label htmlFor="gdpr" id="gdprLabel">I agree to GDPR</label>
+                <label htmlFor="gdpr" id="gdprLabel">Jag godkänner GDPR</label>
 
-                <input type="button" name="submitBooking" onClick={postBooking} value="Reserve Table"></input>
+                <input type="button" name="submitBooking" onClick={postBooking} value="Boka Bord"></input>
 
                 {errorFieldMissing}
                 {bookingComplete}
