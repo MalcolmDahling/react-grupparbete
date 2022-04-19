@@ -150,7 +150,9 @@ export function Admin(){
 
         <button onClick={sendToApi}>Send</button>
 
+        <div className='container'>
             {Api}
+        </div>
         </>
     );
 }
