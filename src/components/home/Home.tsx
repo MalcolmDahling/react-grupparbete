@@ -17,7 +17,7 @@ export function Home(){
             <br></br>
             <div className="Food-text">
             <h1>-Plankstek-</h1>
-                <img src="img/plankstek.png" alt="plankstek" />
+                <img src="img/Plankstek.png" alt="plankstek" />
                 <br></br>
                 <p className="description">Duchesspotatis, 250gr oxfile serveras med baconlindadsparris, bearnaisesås och tomat </p>
                 <p><b>Pris: 225 kr</b></p>
@@ -25,7 +25,7 @@ export function Home(){
             <br></br>
             <div className="Food-text">
             <h1>-Köttfärsås-</h1>
-                <img src="/img/Köttfärsås.png" alt="kottfarssas" />
+                <img src="img/Köttfärssås.png" alt="köttfärssås" />
                 <br></br>
                 <p className='description'>En klassisk pastarätt som serveras med 4Guys egna recept på köttfärssås, och riven permesan.</p>
                 <p><b>Pris: 159 kr</b></p>
@@ -34,7 +34,7 @@ export function Home(){
             
             <div className="Food-text">
             <h1>-Sushi-</h1>
-                <img src="/img/Sushi.png" alt="sushi" />
+                <img src="img/Sushi.png" alt="sushi" />
                 <br></br>
                 
                 <p className="description">2 lax, 1 halstrad lax, 1 lax-ål-avokado, 1 räka, 1 hiramasa, 1avokado, 1 maki, 1 maki med laxröra12 bitar </p>
