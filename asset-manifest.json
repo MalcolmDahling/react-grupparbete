@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-grupparbete/static/css/main.487ac31e.css",
-    "main.js": "/react-grupparbete/static/js/main.63d6e7d4.js",
+    "main.css": "/react-grupparbete/static/css/main.c10a9baa.css",
+    "main.js": "/react-grupparbete/static/js/main.6fd4ad81.js",
     "static/js/787.6b4f36f7.chunk.js": "/react-grupparbete/static/js/787.6b4f36f7.chunk.js",
     "index.html": "/react-grupparbete/index.html",
-    "main.487ac31e.css.map": "/react-grupparbete/static/css/main.487ac31e.css.map",
-    "main.63d6e7d4.js.map": "/react-grupparbete/static/js/main.63d6e7d4.js.map",
+    "main.c10a9baa.css.map": "/react-grupparbete/static/css/main.c10a9baa.css.map",
+    "main.6fd4ad81.js.map": "/react-grupparbete/static/js/main.6fd4ad81.js.map",
     "787.6b4f36f7.chunk.js.map": "/react-grupparbete/static/js/787.6b4f36f7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.487ac31e.css",
-    "static/js/main.63d6e7d4.js"
+    "static/css/main.c10a9baa.css",
+    "static/js/main.6fd4ad81.js"
   ]
 }
