@@ -27,7 +27,10 @@ hr{
 img {
     border: 6px solid rgb(30, 127, 152);
     border-radius: 30px;
-    width: 70%;
+    width: 80%;
+    display: block;
+    
+    
     p{
         text-align: center;
     }
@@ -42,4 +45,41 @@ img {
     text-align: left;
     margin-left: 15%;
     margin-right: 15%;
+}
+.drycks-meny{
+    font-size: 3rem;
+    color: rgb(30, 127, 152);
+}
+.drycker{
+    position: relative;
+    margin-left: 10%;
+    text-align: center;
+    width: 80%;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.40);
+    .fanta{
+        width: 20px;
+    }
+}
+.bordern{
+    display: block;
+    border: 1px solid  rgb(30, 127, 152);
+    margin-left: 300px;
+    margin-right: 300px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.40);
+    
+}
+
+@media only screen and (max-width:768px){
+
+    .bordern{
+        display: block;
+        border: 1px solid  rgb(30, 127, 152);
+        margin-left: 30px;
+        margin-right: 30px;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.40);
+        
+    }
 }
