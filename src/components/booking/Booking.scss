@@ -56,6 +56,11 @@ form {
     }
 
 
+    .red{
+        color: red;
+        font-size: small;
+        margin-bottom: 3%;
+    }
 
 
 
@@ -98,5 +103,11 @@ form {
 
     .bookingComplete{
         color:green;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .Booking-text {
+        font-size: 3rem;
     }
 }

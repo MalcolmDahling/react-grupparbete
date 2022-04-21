@@ -16,6 +16,16 @@ export function Admin(){
         )
     {}}
 
+    class InfoCustomer{
+        constructor (
+        public _id:string,
+        public name:string,
+        public lastname:string,
+        public email:string,
+        public phone:string
+        )
+    {}}
+
     // Används för att push till Api
     interface IBooking{
         restaurantId:string;
@@ -41,6 +51,7 @@ export function Admin(){
     }
 
     const [Data, setData] = useState<GetBookings[]>([])
+    const [Customer, setCustomer] = useState<InfoCustomer[]>([])
 
     // hämtar Api
     useEffect(() => {
@@ -52,6 +63,15 @@ export function Admin(){
         }).catch(err => console.log('Det blev fel'));
     }, [])
 
+     // hämtar Customer från Api
+     const GetCustomer = (CustomerId: string) => {
+        axios.get(`https://school-restaurant-api.azurewebsites.net/customer/${CustomerId}`)
+        .then(res => {
+            console.log('Customer', res);
+            setCustomer(res.data)
+        }).catch(err => console.log(err))
+      }
+
     // tar bort från Api
     const Delete = (id: string) => {
       axios.delete(`https://school-restaurant-api.azurewebsites.net/booking/delete/${id}`)
@@ -60,19 +80,29 @@ export function Admin(){
       }).catch(err => console.log(err))
     }
 
+    //skriver ut Kund på click
+    const CustomerApi = Customer.map((data)=>{
+        return(<div className='info' key={data._id}>
+            <p>Namn: {data.name}</p>
+            <p>Efternamn: {data.lastname}</p>
+            <p>Email: {data.email}</p>
+            <p>Telefon: {data.phone}</p>
+        </div>
+        )
+    });
+
+
     // skriver ut Api i HTML
     const Api = Data.map((data) => {
         return(
-            <div key={data._id}>
-                
-            <tr className='box' key={data._id}>
-                <td>{data.customerId}</td>
-                <td>{data.time}</td>
-                <td>{data.date}</td>
-                <td>{data.numberOfGuests}</td>
-                <td><button onClick={()=>Delete(data._id)}>Ta bort</button></td>
-            </tr>
-    
+            <div key={data._id}>   
+            <div className='box' key={data._id}>
+                <p onClick={()=>GetCustomer(data.customerId)}>Hämta kund</p>
+                <p>{data.time}</p>
+                <p>{data.date}</p>
+                <p>{data.numberOfGuests}</p>
+                <button onClick={()=>Delete(data._id)}>Ta bort</button>
+            </div>
             </div>
         )
     });
@@ -126,6 +156,9 @@ export function Admin(){
     return(
         <>
         <form>
+
+        <h2>Ny bokning</h2>
+
             <label htmlFor="name">Namn:</label>
             <input type="text" name='name' onChange={handleBooking}/>
 
@@ -150,7 +183,21 @@ export function Admin(){
 
         <button onClick={sendToApi}>Send</button>
 
+        <div className='container'>
+        <div className='box'>
+                <p>Kundnummer</p>
+                <p>Tid</p>
+                <p>Datum</p>
+                <p>Antal</p>
+                <p>Ta bort</p>
+            </div>
             {Api}
+        </div>
+
+        <div>
+            <h2>Hämtad Kund</h2>
+            {CustomerApi}
+        </div>
         </>
     );
 }

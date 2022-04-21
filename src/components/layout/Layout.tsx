@@ -63,9 +63,9 @@ export function Layout(){
                 {version == 'mobile' && showMenu &&
                     <nav>
                         <ul>
-                            <li><Link to="/" className="navLink" onClick={hamburgerToggle}>Home</Link></li>
-                            <li><Link to="/booking" className="navLink" onClick={hamburgerToggle}>Booking</Link></li>
-                            <li><Link to="/contact" className="navLink" onClick={hamburgerToggle}>Contact</Link></li>
+                            <li><Link to="/" className="navLink" onClick={hamburgerToggle}>Start</Link></li>
+                            <li><Link to="/booking" className="navLink" onClick={hamburgerToggle}>Bokningar</Link></li>
+                            <li><Link to="/contact" className="navLink" onClick={hamburgerToggle}>Kontakt</Link></li>
                             <li><Link to="/admin" className="navLink" onClick={hamburgerToggle}>Admin</Link></li>
                         </ul>
                     </nav>
@@ -75,9 +75,9 @@ export function Layout(){
                 {version == 'desktop' &&
                     <nav>
                         <ul>
-                            <li><Link to="/" className="navLink">Home</Link></li>
-                            <li><Link to="/booking" className="navLink">Booking</Link></li>
-                            <li><Link to="/contact" className="navLink">Contact</Link></li>
+                            <li><Link to="/" className="navLink">Start</Link></li>
+                            <li><Link to="/booking" className="navLink">Bokningar</Link></li>
+                            <li><Link to="/contact" className="navLink">Kontakt</Link></li>
                             <li><Link to="/admin" className="navLink">Admin</Link></li>
                         </ul>
                     </nav>
@@ -93,7 +93,7 @@ export function Layout(){
                 <p className="Restaurant">Vår resturang: https://school-restaurant-api.azurewebsites.net/restaurant/624abc41df8a9fb11c3ea8b6</p>
             </main>
             
-            <footer>SITE BY GROUP-5 <br/>Copyright &#169;2022 JAMMdevelopers
+            <footer>SIDA AV GRUPP-5 <br/>Copyright &#169;2022 JAMMdevelopers
                 <p>Tel: 000- 000 00 00</p>
             </footer>
         </div>
