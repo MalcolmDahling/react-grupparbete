@@ -191,32 +191,28 @@ export function Booking(){
     }, [newBooking, newCustomer]);
 
 
-    useEffect(() => {
-        console.log(post);
-    }, [post]);
 
 
 
 
 
-    let checkbox = false;
+    const [checkbox, setCheckbox] = useState<boolean>(false);
     function checkCheckbox(){
-        checkbox = !checkbox;
+        setCheckbox(!checkbox);
     }
 
 
-
-
-    const [errorFieldMissing, setErrorFieldMissing] = useState<HTMLParagraphElement | ReactFragment>(<></>);
+    const [error, setError] = useState<HTMLParagraphElement | ReactFragment>(<></>);
     const [bookingComplete, setBookingComplete] = useState<HTMLParagraphElement | ReactFragment>(<></>);
 
     function postBooking(){
 
         if(newBooking.date == '' || newBooking.time == ''|| newCustomer.name == '' || newCustomer.lastname == '' || newCustomer.email == '' || newCustomer.phone == '' || checkbox == false){
-            setErrorFieldMissing(<p className="error">Fyll i alla fält och godkänn GDPR.</p>);
+            setError(<p className="error">Fyll i alla fält och godkänn GDPR.</p>);            
         }
 
         else{
+
             axios.post<IPost>('https://school-restaurant-api.azurewebsites.net/booking/create', post)
             .then(response => {
                 console.log(response);
@@ -226,9 +222,11 @@ export function Booking(){
                 
             });
 
-            setErrorFieldMissing(<></>);
+
+            setError(<></>);
             setBookingComplete(<p className="bookingComplete">Bord bokat!</p>);
         }
+
     }
 
     //########## FORM ##########
@@ -245,9 +243,10 @@ export function Booking(){
             <img src="https://c.stocksy.com/a/1aN400/z9/1043957.jpg" alt="Friends Table"/>
             </div>
             <form>
+
                 <p>Välj dag:</p>
-                <select name="date" onChange={handleChangeDay} /*AND handleChangeBooking*/ defaultValue={"DEFAULT"}>
-                    <option value="DEFAULT" disabled>Välj en dag</option>
+                <select name="date" id="date" onChange={handleChangeDay} /*AND handleChangeBooking*/ defaultValue={"DEFAULT"}>
+                    <option value="DEFAULT" disabled>Välj dag</option>
                     {avaliableDates}
                 </select>
 
@@ -266,24 +265,25 @@ export function Booking(){
                 <input type="range" name="numberOfGuests" onChange={handleChangeBooking} required max={6} min={1} value={newBooking.numberOfGuests}></input>
                 <p className='red'>Är ni fler än 6 personer ring och boka!</p>
 
-                <p>Namn</p>
-                <input type="text" name="name" onChange={handleChangeBooking} required placeholder="Firstname"></input>
+
+                <p>Förnamn</p>
+                <input type="text" name="name" onChange={handleChangeBooking} required placeholder="Firstname" value={newCustomer.name}></input>
 
                 <p>Efternamn</p>
-                <input type="text" name="lastname" onChange={handleChangeBooking} required placeholder="Lastname"></input>
+                <input type="text" name="lastname" onChange={handleChangeBooking} required placeholder="Lastname" value={newCustomer.lastname}></input>
 
                 <p>Email</p>
-                <input type="email" name="email" onChange={handleChangeBooking} required placeholder="Email"></input>
+                <input type="email" name="email" onChange={handleChangeBooking} required placeholder="Email" value={newCustomer.email}></input>
 
                 <p>Telefon</p>
-                <input type="phone" name="phone" onChange={handleChangeBooking} required placeholder="Phone"></input>
+                <input type="phone" name="phone" onChange={handleChangeBooking} required placeholder="Phone" value={newCustomer.phone}></input>
 
                 <input type="checkbox" id="gdpr" className="gdprCheckbox" onChange={checkCheckbox} required></input>
                 <label htmlFor="gdpr" id="gdprLabel">Jag godkänner GDPR</label>
 
                 <input type="button" name="submitBooking" onClick={postBooking} value="Boka Bord"></input>
 
-                {errorFieldMissing}
+                {error}
                 {bookingComplete}
             </form>
         </>
