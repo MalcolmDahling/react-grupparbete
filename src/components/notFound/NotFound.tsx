@@ -4,7 +4,7 @@ export function NotFound(){
 
     return(
         <>
-            notFound
+            <img src="img/404.png" alt="404" />
         </>
     );
 }
