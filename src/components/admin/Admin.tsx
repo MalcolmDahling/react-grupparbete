@@ -97,7 +97,7 @@ export function Admin(){
         return(
             <div key={data._id}>   
             <tr className='box' key={data._id}>
-                <td onClick={()=>GetCustomer(data.customerId)}>{data.customerId}</td>
+                <td onClick={()=>GetCustomer(data.customerId)}>Hämta kunder</td>
                 <td>{data.time}</td>
                 <td>{data.date}</td>
                 <td>{data.numberOfGuests}</td>
