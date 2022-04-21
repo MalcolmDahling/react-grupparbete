@@ -55,7 +55,7 @@ export function Home(){
             <div className="bordern">
             <div className='drycker'>
             <p>Fanta Apelsin<br></br>Exotic<br></br>FreeLemon</p>	
-            <img src="img/fanta.jpg" className="fanta" alt="Fanta"/>
+            <img src="img/fanta.jpg" alt="Fanta"/>
             <p>50cl <b>25 kr</b> </p>
             </div>
             <br></br>

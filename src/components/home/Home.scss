@@ -30,7 +30,6 @@ img {
     width: 80%;
     display: block;
     
-    
     p{
         text-align: center;
     }
@@ -57,9 +56,6 @@ img {
     width: 80%;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.40);
-    .fanta{
-        width: 20px;
-    }
 }
 .bordern{
     display: block;
@@ -73,6 +69,7 @@ img {
 
 @media only screen and (max-width:768px){
 
+    
     .bordern{
         display: block;
         border: 1px solid  rgb(30, 127, 152);
