@@ -96,14 +96,13 @@ export function Admin(){
     const Api = Data.map((data) => {
         return(
             <div key={data._id}>   
-            <tr className='box' key={data._id}>
-                <td onClick={()=>GetCustomer(data.customerId)}>Hämta kunder</td>
-                <td>{data.time}</td>
-                <td>{data.date}</td>
-                <td>{data.numberOfGuests}</td>
-                <td><button onClick={()=>Delete(data._id)}>Ta bort</button></td>
-            </tr>
-            {CustomerApi}
+            <div className='box' key={data._id}>
+                <p onClick={()=>GetCustomer(data.customerId)}>Hämta kund</p>
+                <p>{data.time}</p>
+                <p>{data.date}</p>
+                <p>{data.numberOfGuests}</p>
+                <button onClick={()=>Delete(data._id)}>Ta bort</button>
+            </div>
             </div>
         )
     });
@@ -185,14 +184,19 @@ export function Admin(){
         <button onClick={sendToApi}>Send</button>
 
         <div className='container'>
-        <tr className='box'>
-                <td>Kundnummer</td>
-                <td>Tid</td>
-                <td>Datum</td>
-                <td>Antal</td>
-                <td>Ta bort</td>
-            </tr>
+        <div className='box'>
+                <p>Kundnummer</p>
+                <p>Tid</p>
+                <p>Datum</p>
+                <p>Antal</p>
+                <p>Ta bort</p>
+            </div>
             {Api}
+        </div>
+
+        <div>
+            <h2>Hämtad Kund</h2>
+            {CustomerApi}
         </div>
         </>
     );

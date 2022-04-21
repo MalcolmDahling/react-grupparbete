@@ -35,7 +35,7 @@ export function Contact(){
 
     return(
         <>
-        <p className="Contact-Title">Contact</p>
+        <p className="Contact-Title">Kontakt</p>
         <br></br>
         <img src="https://media-cdn.tripadvisor.com/media/photo-s/07/e8/9b/44/blue-bar.jpg" className="Contact-Picture"/>
         <h1 className="Contact-text"> {RestaurantInfo}</h1>

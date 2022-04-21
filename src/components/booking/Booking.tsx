@@ -264,6 +264,7 @@ export function Booking(){
 
                 <p>Välj hur många personer: {newBooking.numberOfGuests}</p>
                 <input type="range" name="numberOfGuests" onChange={handleChangeBooking} required max={6} min={1} value={newBooking.numberOfGuests}></input>
+                <p className='red'>Är ni fler än 6 personer ring och boka!</p>
 
                 <p>Namn</p>
                 <input type="text" name="name" onChange={handleChangeBooking} required placeholder="Firstname"></input>
